@@ -72,19 +72,6 @@ class AuthorDetailView(generic.DetailView):
         
         return render(request, 'catalog/author_detail.html', context={'author': author})
 
-class BookListByAuthor(generic.ListView):
-    model = Book
-
-    def get_queryset(self):
-        return Book.objects.all()
-
-    def get_context_data(self, **kwargs):
-        context = super(BookListView, self).get_context_data(**kwargs)
-        context['some_data'] = 'This is just some data'
-        return context
-
-    template_name='locallibrary/catalog/templates/catalog/author_detail.html'
-
 class BookListView(generic.ListView):
     model = Book
     paginate_by = 3
